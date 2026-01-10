@@ -1,0 +1,19 @@
+{
+  "Login": {
+    "paidemail": "dilshi@mailinator.com",
+    "paidpassword": "123456",
+    "useremail": "kalyla@forexzig.com",
+    "userpassword": "123456"
+  },
+
+  "CardDetails": {
+    "CardNumber": "4242424242424242",
+    "ExpDate": "1227",
+    "CVC": "123",
+    "CardHolderName": "Dilshi",
+    "AddressLine1": "No 10",
+    "AddressLine2": "Colombo",
+    "City": "Colombo",
+    "PostalCode": "10250"
+  }
+}

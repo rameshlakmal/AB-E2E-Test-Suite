@@ -1,0 +1,32 @@
+{
+  "name": "ab-e2e-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "allure:generate": "npx allure generate ./allure-results --clean",
+    "allure:open": "npx allure open ./allure-report",
+    "allure:serve": "npx allure serve",
+    "test": "npx playwright test",
+    "posttest": "npm run allure:generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "@faker-js/faker": "^9.9.0",
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.15",
+    "allure-commandline": "^2.32.0",
+    "allure-playwright": "^3.2.1",
+    "eslint": "^9.23.0",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^16.0.0",
+    "ortoni-report": "^4.0.4",
+    "typescript-eslint": "^8.29.0"
+  },
+  "dependencies": {
+    "aiotests-playwright-reporter": "^1.0.1"
+  }
+}
