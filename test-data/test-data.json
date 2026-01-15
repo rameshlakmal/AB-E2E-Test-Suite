@@ -5,6 +5,9 @@
     "useremail": "kalyla@forexzig.com",
     "userpassword": "123456"
   },
+  "Settings": {
+    "registeredusermail": "light@mailinator.com"
+  },
 
   "CardDetails": {
     "CardNumber": "4242424242424242",

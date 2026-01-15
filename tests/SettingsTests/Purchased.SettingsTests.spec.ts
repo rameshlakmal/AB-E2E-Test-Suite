@@ -1,16 +1,9 @@
-import { test, expect } from "../fixtures/fixtures.ts";
+import { test, expect } from "../../fixtures/fixtures.ts";
 import { faker } from "@faker-js/faker";
-import { Login } from "../test-data/test-data.json";
-import type { PersonalInfo } from "../types/profile.types";
+import { Settings } from "../../test-data/test-data.json";
+import type { PersonalInfo } from "../../types/profile.types.ts";
 
 test.describe("Settings Test Cases", () => {
-  test.beforeEach(({}, testInfo) => {
-    test.skip(
-      testInfo.project.name !== "purchased",
-      "Runs only for purchased users"
-    );
-  });
-
   let personalInfo: PersonalInfo;
 
   test.beforeAll(() => {
@@ -72,7 +65,7 @@ test.describe("Settings Test Cases", () => {
     page,
   }) => {
     await settingsPage.NavigateToSettings();
-    await settingsPage.ChangeEmail(Login.paidemail);
+    await settingsPage.ChangeEmail(Settings.registeredusermail);
     await settingsPage.clickUpdateEmailButton();
     await expect(page.getByText("A user with this email")).toBeVisible();
   });

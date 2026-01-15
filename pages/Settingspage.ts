@@ -18,11 +18,7 @@ export default class SettingsPage {
     await this.page.getByRole("textbox", { name: "Email" }).fill(email);
   }
   async clickUpdateEmailButton(): Promise<void> {
-    await this.page
-      .locator("form")
-      .filter({ hasText: "EmailUpdate" })
-      .getByRole("button")
-      .click();
+    await this.page.getByRole("button", { name: "Update" }).nth(1).click();
   }
 
   async ChangeUserName(username: string): Promise<void> {

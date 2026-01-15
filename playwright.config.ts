@@ -31,7 +31,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ["line"],
+    ["list"],
     ["dot"],
     ["ortoni-report", reportConfig],
     // ["aiotests-playwright-reporter", { aioConfig: aioConfigDetails }],
@@ -61,9 +61,13 @@ export default defineConfig({
     {
       name: "setup",
       testMatch: /.*\.setup\.ts/,
+      use: {
+        launchOptions: { args: ["--start-maximized"] },
+      },
     },
     {
       name: "guest",
+      testMatch: /.*Guest\..*\.spec\.ts/,
       use: {
         viewport: null,
         channel: "chrome",
@@ -71,8 +75,10 @@ export default defineConfig({
       },
       dependencies: ["setup"],
     },
+
     {
       name: "user",
+      testMatch: /.*Member\..*\.spec\.ts/,
       use: {
         viewport: null,
         channel: "chrome",
@@ -81,8 +87,10 @@ export default defineConfig({
       },
       dependencies: ["setup"],
     },
+
     {
       name: "purchased",
+      testMatch: /.*Purchased\..*\.spec\.ts/,
       use: {
         viewport: null,
         channel: "chrome",
