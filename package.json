@@ -7,7 +7,8 @@
     "allure:open": "npx allure open ./allure-report",
     "allure:serve": "npx allure serve",
     "test": "npx playwright test",
-    "posttest": "npm run allure:generate"
+    "posttest": "npm run allure:generate",
+    "test:roles": "concurrently \"npx playwright test --project=guest\" \"npx playwright test --project=member\" \"npx playwright test --project=purchased\""
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "@types/node": "^22.13.15",
     "allure-commandline": "^2.32.0",
     "allure-playwright": "^3.2.1",
+    "concurrently": "^9.2.1",
     "eslint": "^9.23.0",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^16.0.0",
