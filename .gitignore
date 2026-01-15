@@ -9,4 +9,5 @@ allure-results/
 test-results/
 allure-report/
 report-db/
-test-results
+test-results/
+.auth/

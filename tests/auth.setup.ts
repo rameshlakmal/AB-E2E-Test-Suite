@@ -1,4 +1,3 @@
-import { chromium } from "@playwright/test";
 import { Login } from "../test-data/test-data.json";
 import { expect, test as setup } from "@playwright/test";
 import LoginPage from "../pages/LoginPage";

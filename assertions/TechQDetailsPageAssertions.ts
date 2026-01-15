@@ -24,10 +24,10 @@ export const QuestionDetailsPageAssertions = {
         expect(page.getByText("Oops!You need to log in to")).toBeVisible(),
 
       user: async () =>
-        expect(page.getByText("Get Access NowPurchase")).toBeVisible(),
+        expect(page.getByText("Highlight to execute").first()).toBeVisible(),
 
       purchased: async () =>
-        expect(page.getByText("Highlight to execute").first()).toBeVisible(),
+        expect(page.getByText("Oops!You need to log in to")).toBeVisible(),
     });
   },
 
