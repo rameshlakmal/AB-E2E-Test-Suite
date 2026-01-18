@@ -28,7 +28,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 1,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : 2,
+  workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI ? "blob" : "html",
 
@@ -64,12 +64,15 @@ export default defineConfig({
       name: "setup",
       testMatch: /.*\.setup\.ts/,
       use: {
+        viewport: null,
+        channel: "chrome",
         launchOptions: { args: ["--start-maximized"] },
       },
     },
     {
       name: "guest",
-      testMatch: /.*Guest\..*\.spec\.ts/,
+      testMatch: /.*\.Guest\.spec\.ts/,
+
       use: {
         viewport: null,
         channel: "chrome",
@@ -80,7 +83,8 @@ export default defineConfig({
 
     {
       name: "user",
-      testMatch: /.*Member\..*\.spec\.ts/,
+      testMatch: /.*\.Member\.spec\.ts/,
+
       use: {
         viewport: null,
         channel: "chrome",
@@ -92,7 +96,8 @@ export default defineConfig({
 
     {
       name: "purchased",
-      testMatch: /.*Purchased\..*\.spec\.ts/,
+      testMatch: /.*\.Purchased\.spec\.ts/,
+
       use: {
         viewport: null,
         channel: "chrome",
