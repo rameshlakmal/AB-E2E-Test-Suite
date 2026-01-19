@@ -64,15 +64,12 @@ export default defineConfig({
       name: "setup",
       testMatch: /.*\.setup\.ts/,
       use: {
-        viewport: null,
-        channel: "chrome",
         launchOptions: { args: ["--start-maximized"] },
       },
     },
     {
       name: "guest",
-      testMatch: /.*\.Guest\.spec\.ts/,
-
+      testMatch: /.*Guest\..*\.spec\.ts/,
       use: {
         viewport: null,
         channel: "chrome",
@@ -83,8 +80,7 @@ export default defineConfig({
 
     {
       name: "user",
-      testMatch: /.*\.Member\.spec\.ts/,
-
+      testMatch: /.*Member\..*\.spec\.ts/,
       use: {
         viewport: null,
         channel: "chrome",
@@ -96,8 +92,7 @@ export default defineConfig({
 
     {
       name: "purchased",
-      testMatch: /.*\.Purchased\.spec\.ts/,
-
+      testMatch: /.*Purchased\..*\.spec\.ts/,
       use: {
         viewport: null,
         channel: "chrome",
