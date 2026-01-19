@@ -17,6 +17,7 @@ export default class TechQuestionDetailsPage {
     await this.page
       .getByRole("link", { name: "IT Department very-hard" })
       .click();
+    await this.page.waitForTimeout(2000);
   }
 
   async openfreequestion(): Promise<void> {
@@ -29,6 +30,7 @@ export default class TechQuestionDetailsPage {
     await this.page
       .getByRole("link", { name: "Data Sources very-hard" })
       .click();
+    await this.page.waitForTimeout(2000);
   }
 
   async OpenQuestion(): Promise<void> {
@@ -41,11 +43,16 @@ export default class TechQuestionDetailsPage {
     await this.page
       .getByRole("link", { name: "Traffic Control moderate" })
       .click();
+    await this.page.waitForTimeout(2000);
   }
 
   async NavigateToSubmissionsTab(): Promise<void> {
     await this.page.getByRole("tab", { name: "Solutions" }).click();
     await this.page.getByRole("tab", { name: "Community" }).click();
+  }
+
+  async NavigateToYourSubmissionsTab(): Promise<void> {
+    await this.page.getByRole("tab", { name: "Your Submissions" }).click();
   }
 
   async ClearCodeEditor(): Promise<void> {
@@ -77,10 +84,11 @@ export default class TechQuestionDetailsPage {
 
   async DeleteCommunitySolution(): Promise<void> {
     await this.page
-      .getByRole("button")
-      .filter({ hasText: /^$/ })
-      .nth(5)
+      .locator(
+        '//*[@id="tabs-home"]/div[2]/div[1]/div[2]/div/div[2]/div[2]/button',
+      )
       .click();
+    await this.page.waitForTimeout(2000);
   }
 
   async ViewHints(): Promise<void> {

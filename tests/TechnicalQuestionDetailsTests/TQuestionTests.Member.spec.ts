@@ -6,7 +6,7 @@ test.describe("Technical Question page Test Cases", () => {
     page,
   }) => {
     await techQuestionDetailsPage.OpenQuestion();
-    await techQuestionDetailsPage.NavigateToSubmissionsTab();
+    await techQuestionDetailsPage.NavigateToYourSubmissionsTab();
     await expect(
       page
         .locator("div")
@@ -14,7 +14,7 @@ test.describe("Technical Question page Test Cases", () => {
           hasText:
             /^No submissions yet Submit your code to see the results here!$/,
         })
-        .nth(1)
+        .nth(1),
     ).toBeVisible();
   });
 

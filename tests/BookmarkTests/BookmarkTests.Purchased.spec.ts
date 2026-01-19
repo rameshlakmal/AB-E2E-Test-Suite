@@ -4,13 +4,22 @@ import { faker } from "@faker-js/faker";
 test.describe("bookmark Page Test Cases", () => {
   let bookmarkListName: string;
   let newName: string;
+  let createbookmarklist: string;
+  let bookmarkListFromQuestionPage: string;
+  let bookmarkListFromProjectPage: string;
 
   test.beforeAll(() => {
     bookmarkListName = faker.lorem.word();
     newName = faker.lorem.word();
+    createbookmarklist = faker.lorem.word();
+    bookmarkListFromQuestionPage = faker.lorem.word();
+    bookmarkListFromProjectPage = faker.lorem.word();
   });
 
-  test("Verify that rename a bookmark list", async ({ bookmarkPage, page }) => {
+  test("Verify that user can rename a bookmark list", async ({
+    bookmarkPage,
+    page,
+  }) => {
     await bookmarkPage.NavigatetoBookmarkPage();
     await bookmarkPage.CreateNewBookmarkList(bookmarkListName);
     await expect(
@@ -26,9 +35,9 @@ test.describe("bookmark Page Test Cases", () => {
     page,
   }) => {
     await bookmarkPage.NavigatetoBookmarkPage();
-    await bookmarkPage.CreateNewBookmarkList(bookmarkListName);
+    await bookmarkPage.CreateNewBookmarkList(createbookmarklist);
     await expect(
-      page.getByRole("button", { name: bookmarkListName }),
+      page.getByRole("button", { name: createbookmarklist }),
     ).toBeVisible();
   });
 
@@ -36,9 +45,11 @@ test.describe("bookmark Page Test Cases", () => {
     bookmarkPage,
     page,
   }) => {
-    await bookmarkPage.CreateBookmarkListFromQuestionPage(bookmarkListName);
+    await bookmarkPage.CreateBookmarkListFromQuestionPage(
+      bookmarkListFromQuestionPage,
+    );
     await expect(
-      page.getByRole("button", { name: bookmarkListName }),
+      page.getByRole("button", { name: bookmarkListFromQuestionPage }),
     ).toBeVisible();
   });
 
@@ -46,10 +57,12 @@ test.describe("bookmark Page Test Cases", () => {
     bookmarkPage,
     page,
   }) => {
-    await bookmarkPage.CreateBookmarkListFromProjectPage(bookmarkListName);
-    await page.waitForTimeout(2000); // Added wait to ensure the page is fully loaded
+    await bookmarkPage.CreateBookmarkListFromProjectPage(
+      bookmarkListFromProjectPage,
+    );
+
     await expect(
-      page.getByRole("button", { name: bookmarkListName }),
+      page.getByRole("button", { name: bookmarkListFromProjectPage }),
     ).toBeVisible();
   });
 

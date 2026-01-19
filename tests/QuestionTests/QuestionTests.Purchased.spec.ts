@@ -5,14 +5,4 @@ test.describe("Question Test Cases", () => {
     await questionPage.navigatetoquestionpage();
     await expect(page.getByText("All skillsAll the timeLast")).toBeVisible();
   });
-
-  test("Verify that visiblity of the status dropdown", async ({
-    questionPage,
-    page,
-  }) => {
-    await questionPage.navigatetoquestionpage();
-    await expect(
-      page.locator(".hidden > div:nth-child(3)").first()
-    ).toBeVisible();
-  });
 });

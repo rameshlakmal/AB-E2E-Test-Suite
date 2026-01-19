@@ -9,7 +9,7 @@ export default class BookmarkPage {
 
   async NavigatetoBookmarkPage(): Promise<void> {
     await this.page.goto("/");
-    await this.page.getByRole("button", { name: "Polly" }).click();
+    await this.page.locator("img.size-9.cursor-pointer.rounded-lg").click();
     await this.page.getByRole("link", { name: "Bookmarks" }).click();
   }
 
@@ -37,8 +37,10 @@ export default class BookmarkPage {
     await this.page.getByRole("button", { name: "New List" }).click();
     await this.page.locator('input[name="title"]').fill(newListName);
     await this.page.locator('input[name="title"]').press("Enter");
-    await this.page.getByRole("button", { name: "Polly" }).click();
+    await this.page.locator("img.size-9.cursor-pointer.rounded-lg").click();
     await this.page.getByRole("link", { name: "Bookmarks" }).click();
+    await this.page.waitForTimeout(5000); // Added wait to ensure the page is fully loaded
+    await this.page.reload();
   }
 
   async CreateBookmarkListFromProjectPage(newListName: string): Promise<void> {
@@ -55,8 +57,10 @@ export default class BookmarkPage {
     await this.page.getByRole("button", { name: "New List" }).click();
     await this.page.locator('input[name="title"]').fill(newListName);
     await this.page.locator('input[name="title"]').press("Enter");
-    await this.page.getByRole("button", { name: "Polly" }).click();
+    await this.page.locator("img.size-9.cursor-pointer.rounded-lg").click();
     await this.page.getByRole("link", { name: "Bookmarks" }).click();
+    await this.page.waitForTimeout(5000); // Added wait to ensure the page is fully loaded
+    await this.page.reload();
   }
 
   async RenameBookmarkList(listName: string, newName: string): Promise<void> {

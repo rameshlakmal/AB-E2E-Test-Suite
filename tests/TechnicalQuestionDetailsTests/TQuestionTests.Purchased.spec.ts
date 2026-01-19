@@ -7,7 +7,7 @@ test.describe("Technical Question page Test Cases", () => {
     page,
   }) => {
     await techQuestionDetailsPage.OpenQuestion();
-    await techQuestionDetailsPage.NavigateToSubmissionsTab();
+    await techQuestionDetailsPage.NavigateToYourSubmissionsTab();
     await expect(
       page
         .locator("div")
@@ -98,12 +98,6 @@ test.describe("Technical Question page Test Cases", () => {
     await expect(page.getByText("Shared in community solutions")).toBeVisible();
     await techQuestionDetailsPage.NavigateToSubmissionsTab();
     await techQuestionDetailsPage.FilterNewestSolutions();
-    const container = page.locator("div.mt-4.space-y-4");
-    const rows = container.locator("div.flex.flex-row.justify-between.gap-2");
-    // await expect(rows.first()).toBeVisible();
-
-    // const before = await rows.count();
-    // console.log("before:", before);
     await techQuestionDetailsPage.DeleteCommunitySolution();
     await expect(page.getByText("Solution deleted successfully")).toBeVisible();
 
