@@ -50,7 +50,7 @@ export default defineConfig({
     screenshot:
       "only-on-failure" /* Take screenshot on failure. See https://playwright.dev/docs/test-reporters */,
 
-    headless: false,
+    headless: true,
 
     httpCredentials: {
       username: "te3ter",
