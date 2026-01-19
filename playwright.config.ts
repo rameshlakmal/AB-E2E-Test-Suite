@@ -30,12 +30,14 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ["list"],
-    ["dot"],
-    ["ortoni-report", reportConfig],
-    // ["aiotests-playwright-reporter", { aioConfig: aioConfigDetails }],
-  ],
+  reporter: process.env.CI ? "blob" : "html",
+
+  // reporter: [
+  //   ["list"],
+  //   ["dot"],
+  //   ["ortoni-report", reportConfig],
+  //   // ["aiotests-playwright-reporter", { aioConfig: aioConfigDetails }],
+  // ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -48,7 +50,7 @@ export default defineConfig({
     screenshot:
       "only-on-failure" /* Take screenshot on failure. See https://playwright.dev/docs/test-reporters */,
 
-    headless: false,
+    headless: true,
 
     httpCredentials: {
       username: "te3ter",

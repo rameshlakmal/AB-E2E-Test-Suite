@@ -1,7 +1,8 @@
 import { test as base } from "@playwright/test";
 import LoginPage from "../pages/LoginPage";
 import QuestionPage from "../pages/QuestionPage";
-import TechQuestionDetailsPage from "../pages/TQuestionDetailspage";
+import TechQuestionDetailsPage from "../pages/TQuestionDetailsPage";
+import BookmarkPage from "../pages/BookmarkPage";
 import SettingsPage from "../pages/Settingspage";
 
 type Fixtures = {
@@ -9,6 +10,7 @@ type Fixtures = {
   questionPage: QuestionPage;
   techQuestionDetailsPage: TechQuestionDetailsPage;
   settingsPage: SettingsPage;
+  bookmarkPage: BookmarkPage;
 };
 
 export const test = base.extend<Fixtures>({
@@ -23,6 +25,9 @@ export const test = base.extend<Fixtures>({
   },
   settingsPage: async ({ page }, use) => {
     await use(new SettingsPage(page));
+  },
+  bookmarkPage: async ({ page }, use) => {
+    await use(new BookmarkPage(page));
   },
 });
 
