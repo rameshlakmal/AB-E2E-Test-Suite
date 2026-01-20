@@ -50,7 +50,7 @@ export default defineConfig({
     screenshot:
       "only-on-failure" /* Take screenshot on failure. See https://playwright.dev/docs/test-reporters */,
 
-    headless: true,
+    headless: false,
 
     httpCredentials: {
       username: "te3ter",
@@ -64,12 +64,15 @@ export default defineConfig({
       name: "setup",
       testMatch: /.*\.setup\.ts/,
       use: {
+        viewport: null,
+        channel: "chrome",
         launchOptions: { args: ["--start-maximized"] },
       },
     },
     {
       name: "guest",
-      testMatch: /.*Guest\..*\.spec\.ts/,
+      testMatch: /.*\.Guest\.spec\.ts/,
+
       use: {
         viewport: null,
         channel: "chrome",
@@ -80,7 +83,7 @@ export default defineConfig({
 
     {
       name: "user",
-      testMatch: /.*Member\..*\.spec\.ts/,
+      testMatch: /.*\.Member\.spec\.ts/,
       use: {
         viewport: null,
         channel: "chrome",
@@ -92,7 +95,7 @@ export default defineConfig({
 
     {
       name: "purchased",
-      testMatch: /.*Purchased\..*\.spec\.ts/,
+      testMatch: /.*\.Purchased\.spec\.ts/,
       use: {
         viewport: null,
         channel: "chrome",
