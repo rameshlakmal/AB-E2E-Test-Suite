@@ -31,3 +31,53 @@ jobs:
         run: npx playwright test --project=setup
       - name: Run Playwright tests for ${{ matrix.role }}
         run: npx playwright test --project=${{ matrix.role }}
+
+      - name: Upload Playwright Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        id: artifact-upload-step
+        with:
+          name: allure-results
+          path: test-results
+
+      - name: Link Git Information And Browser Version To Allure Report
+        working-directory: allure-results
+        if: always()
+        run: |
+          {
+            echo ARTIFACT_URL=${{ steps.artifact-upload-step.outputs.artifact-url }}
+            echo BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            echo GIT_BRANCH=${{ github.head_ref || github.ref_name }}
+            echo GIT_COMMIT_ID=${{ github.sha }}
+            echo GIT_COMMIT_MESSAGE=$(git show -s --format=%s HEAD)
+            echo GIT_COMMIT_AUTHOR_NAME=$(git show -s --format='%ae' HEAD)
+            echo GIT_COMMIT_TIME=$(git show -s --format=%ci HEAD)
+            echo CHROME_VERSION=$(google-chrome --product-version)
+          } >> environment.properties
+
+      - name: Get Allure history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+          keep_reports: 20
+
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history

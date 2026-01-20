@@ -1,0 +1,29 @@
+{
+  "cookies": [
+    {
+      "name": "ab_device_id",
+      "value": "DixURq_Qf-WpSk-jCZZR0",
+      "domain": "staging.analystbuilder.com",
+      "path": "/",
+      "expires": 1800480503,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://staging.analystbuilder.com",
+      "localStorage": [
+        {
+          "name": "sb-nsjrrdvthnqqvzabbhwn-auth-token",
+          "value": "{\"access_token\":\"eyJhbGciOiJIUzI1NiIsImtpZCI6IjFLRHdINFBTbTVSVWF0NVgiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL25zanJyZHZ0aG5xcXZ6YWJiaHduLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI2OWY0YmYyYS1jNTU4LTRlNDMtYjk4OS02NGY4ZjA5ZmVlY2UiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzY4OTQ4MTA4LCJpYXQiOjE3Njg5NDQ1MDgsImVtYWlsIjoia2FseWxhQGZvcmV4emlnLmNvbSIsInBob25lIjoiIiwiYXBwX21ldGFkYXRhIjp7InByb3ZpZGVyIjoiZW1haWwiLCJwcm92aWRlcnMiOlsiZW1haWwiXX0sInVzZXJfbWV0YWRhdGEiOnsiZW1haWwiOiJrYWx5bGFAZm9yZXh6aWcuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZ1bGxfbmFtZSI6ImthbHlsYSIsInBob25lX3ZlcmlmaWVkIjpmYWxzZSwic3ViIjoiNjlmNGJmMmEtYzU1OC00ZTQzLWI5ODktNjRmOGYwOWZlZWNlIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE3Njg5NDQ1MDh9XSwic2Vzc2lvbl9pZCI6IjVhZTVhMTBmLTM4ZjItNDM4OC04MGI5LTQ5ZjQ4MzFmMGZiNSIsImlzX2Fub255bW91cyI6ZmFsc2V9.igiwUd-N1bmpangEJP1HtB3NjzJBRRaEyz_eD9wcrso\",\"token_type\":\"bearer\",\"expires_in\":3600,\"expires_at\":1768948108,\"refresh_token\":\"m7kmyzab5vq7\",\"user\":{\"id\":\"69f4bf2a-c558-4e43-b989-64f8f09feece\",\"aud\":\"authenticated\",\"role\":\"authenticated\",\"email\":\"kalyla@forexzig.com\",\"email_confirmed_at\":\"2026-01-04T17:07:27.505761Z\",\"phone\":\"\",\"confirmation_sent_at\":\"2026-01-04T17:07:13.093114Z\",\"confirmed_at\":\"2026-01-04T17:07:27.505761Z\",\"new_email\":\"jeson@mailinator.com\",\"email_change_sent_at\":\"2026-01-09T22:28:21.235354Z\",\"last_sign_in_at\":\"2026-01-20T21:28:28.12341245Z\",\"app_metadata\":{\"provider\":\"email\",\"providers\":[\"email\"]},\"user_metadata\":{\"email\":\"kalyla@forexzig.com\",\"email_verified\":true,\"full_name\":\"kalyla\",\"phone_verified\":false,\"sub\":\"69f4bf2a-c558-4e43-b989-64f8f09feece\"},\"identities\":[{\"identity_id\":\"f89868db-2820-40d2-9772-fa18fe364ac7\",\"id\":\"69f4bf2a-c558-4e43-b989-64f8f09feece\",\"user_id\":\"69f4bf2a-c558-4e43-b989-64f8f09feece\",\"identity_data\":{\"email\":\"kalyla@forexzig.com\",\"email_verified\":true,\"full_name\":\"kalyla\",\"phone_verified\":false,\"sub\":\"69f4bf2a-c558-4e43-b989-64f8f09feece\"},\"provider\":\"email\",\"last_sign_in_at\":\"2026-01-04T17:07:13.085376Z\",\"created_at\":\"2026-01-04T17:07:13.08543Z\",\"updated_at\":\"2026-01-04T17:07:13.08543Z\",\"email\":\"kalyla@forexzig.com\"}],\"created_at\":\"2026-01-04T17:07:13.078235Z\",\"updated_at\":\"2026-01-20T21:28:28.127098Z\",\"is_anonymous\":false},\"weak_password\":null}"
+        },
+        {
+          "name": "gbFeaturesCache",
+          "value": "[[\"https://cdn.growthbook.io||sdk-yqU3eVTNrCDjKa2\",{\"data\":{\"status\":200,\"features\":{\"r-enabled\":{\"defaultValue\":true},\"ai-enabled\":{\"defaultValue\":true},\"skip-date-parse-enabled\":{\"defaultValue\":true},\"new-sql-parser\":{\"defaultValue\":true},\"year-end-recap\":{\"defaultValue\":true},\"diff-whitespace-enabled\":{\"defaultValue\":true},\"general-question-enabled\":{\"defaultValue\":true},\"python-lsp-enabled\":{\"defaultValue\":true},\"gq-interview-agent\":{\"defaultValue\":true},\"resume-analyzer\":{\"defaultValue\":true}},\"experiments\":[],\"dateUpdated\":\"2026-01-13T09:03:04.479Z\"},\"version\":\"2026-01-13T09:03:04.479Z\",\"staleAt\":\"2026-01-20T21:29:24.040Z\",\"sse\":true}]]"
+        }
+      ]
+    }
+  ]
+}

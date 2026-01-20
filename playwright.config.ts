@@ -1,13 +1,5 @@
 import { defineConfig } from "@playwright/test";
-import { OrtoniReportConfig } from "ortoni-report";
 
-const reportConfig: OrtoniReportConfig = {
-  open: process.env.CI ? "never" : "always",
-  folderPath: "report-db",
-  filename: "index.html",
-  title: "Ortoni Test Report",
-  projectName: "Ortoni-Report",
-};
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -30,7 +22,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? "blob" : "html",
+  reporter: [["line"], ["allure-playwright"]],
 
   // reporter: [
   //   ["list"],
