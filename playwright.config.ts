@@ -63,11 +63,11 @@ export default defineConfig({
     {
       name: "setup",
       testMatch: /.*\.setup\.ts/,
-      use: {
-        viewport: null,
-        channel: "chrome",
-        launchOptions: { args: ["--start-maximized"] },
-      },
+      // use: {
+      //   viewport: null,
+      //   channel: "chrome",
+      //   launchOptions: { args: ["--start-maximized"] },
+      // },
     },
     {
       name: "guest",
