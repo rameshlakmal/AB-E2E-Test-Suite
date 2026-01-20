@@ -63,11 +63,11 @@ export default defineConfig({
     {
       name: "setup",
       testMatch: /.*\.setup\.ts/,
-      // use: {
-      //   viewport: null,
-      //   channel: "chrome",
-      //   launchOptions: { args: ["--start-maximized"] },
-      // },
+      use: {
+        viewport: null,
+        channel: "chrome",
+        // launchOptions: { args: ["--start-maximized"] },
+      },
     },
     {
       name: "guest",
@@ -76,7 +76,7 @@ export default defineConfig({
       use: {
         viewport: null,
         channel: "chrome",
-        launchOptions: { args: ["--start-maximized"] },
+        // launchOptions: { args: ["--start-maximized"] },
       },
       dependencies: ["setup"],
     },
@@ -88,7 +88,7 @@ export default defineConfig({
         viewport: null,
         channel: "chrome",
         storageState: "./.auth/user.json",
-        launchOptions: { args: ["--start-maximized"] },
+        // launchOptions: { args: ["--start-maximized"] },
       },
       dependencies: ["setup"],
     },
@@ -100,7 +100,7 @@ export default defineConfig({
         viewport: null,
         channel: "chrome",
         storageState: "./.auth/purchased.json",
-        launchOptions: { args: ["--start-maximized"] },
+        // launchOptions: { args: ["--start-maximized"] },
       },
       dependencies: ["setup"],
     },
