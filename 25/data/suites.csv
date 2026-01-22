@@ -1,4 +1,5 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","4334","Open a free question","guest","Thu Jan 22 21:02:16 UTC 2026","passed","Thu Jan 22 21:02:20 UTC 2026","Technical Question page Test Cases","TechnicalQuestionDetailsTests/TQuestionTests.Guest.spec.ts","",""
-"","1377","Check the progress bar","guest","Thu Jan 22 21:02:11 UTC 2026","passed","Thu Jan 22 21:02:12 UTC 2026","Question Test Cases","QuestionTests/QuestionTests.Guest.spec.ts","",""
-"","4151","Open a premium question","guest","Thu Jan 22 21:02:12 UTC 2026","passed","Thu Jan 22 21:02:16 UTC 2026","Technical Question page Test Cases","TechnicalQuestionDetailsTests/TQuestionTests.Guest.spec.ts","",""
+"","4100","Open a premium question","user","Thu Jan 22 21:02:32 UTC 2026","passed","Thu Jan 22 21:02:36 UTC 2026","Technical Question page Test Cases","TechnicalQuestionDetailsTests/TQuestionTests.Member.spec.ts","",""
+"","1697","Check the progress bar","user","Thu Jan 22 21:02:25 UTC 2026","passed","Thu Jan 22 21:02:27 UTC 2026","Question Test Cases","QuestionTests/QuestionTests.Member.spec.ts","",""
+"","5070","Check submission tab when there are no submissions","user","Thu Jan 22 21:02:27 UTC 2026","passed","Thu Jan 22 21:02:32 UTC 2026","Technical Question page Test Cases","TechnicalQuestionDetailsTests/TQuestionTests.Member.spec.ts","",""
+"","4181","Open a free question","user","Thu Jan 22 21:02:36 UTC 2026","passed","Thu Jan 22 21:02:40 UTC 2026","Technical Question page Test Cases","TechnicalQuestionDetailsTests/TQuestionTests.Member.spec.ts","",""
