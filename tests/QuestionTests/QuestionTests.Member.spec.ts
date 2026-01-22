@@ -7,9 +7,5 @@ test.describe("Question Test Cases", () => {
   });
 });
 
-// Fix local errors
-//Fix pipeline errors
 //Create a seperate file for locators
-//Login global setup for all tests
-//Playwright allure reporter integration and show as output in the pipeline
 //Try plywright agents for test generation

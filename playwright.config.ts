@@ -1,4 +1,5 @@
 import { defineConfig } from "@playwright/test";
+import os from "os";
 
 /**
  * Read environment variables from file.
@@ -22,7 +23,20 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [["line"], ["allure-playwright"]],
+  reporter: [
+    ["line"],
+    [
+      "allure-playwright",
+      {
+        environmentInfo: {
+          os_platform: os.platform(),
+          os_release: os.release(),
+          os_version: os.version(),
+          node_version: process.version,
+        },
+      },
+    ],
+  ],
 
   // reporter: [
   //   ["list"],
@@ -31,6 +45,8 @@ export default defineConfig({
   //   // ["aiotests-playwright-reporter", { aioConfig: aioConfigDetails }],
   // ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  globalSetup: require.resolve("./tests/auth.setup.ts"), // <-- adjust path
+
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: "https://staging.analystbuilder.com/",
@@ -50,7 +66,6 @@ export default defineConfig({
     },
   },
 
-  /* Configure projects for major browsers */
   projects: [
     {
       name: "setup",
@@ -70,7 +85,6 @@ export default defineConfig({
       //   channel: "chrome",
       //   launchOptions: { args: ["--start-maximized"] },
       // },
-      dependencies: ["setup"],
     },
 
     {
@@ -82,7 +96,6 @@ export default defineConfig({
         storageState: "./.auth/user.json",
         // launchOptions: { args: ["--start-maximized"] },
       },
-      dependencies: ["setup"],
     },
 
     {
@@ -94,7 +107,6 @@ export default defineConfig({
         storageState: "./.auth/purchased.json",
         // launchOptions: { args: ["--start-maximized"] },
       },
-      dependencies: ["setup"],
     },
   ],
 

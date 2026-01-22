@@ -1,15 +1,18 @@
 import { Page } from "@playwright/test";
+import { LocatorManager } from "../locators/LocatorManager";
 
 export default class BookmarkPage {
   private page: Page;
+  private locators: typeof LocatorManager.NavigationLocators;
 
   constructor(page: Page) {
     this.page = page;
+    this.locators = LocatorManager.NavigationLocators;
   }
 
   async NavigatetoBookmarkPage(): Promise<void> {
     await this.page.goto("/");
-    await this.page.locator("img.size-9.cursor-pointer.rounded-lg").click();
+    await this.page.locator(this.locators.Profile).click();
     await this.page.getByRole("link", { name: "Bookmarks" }).click();
   }
 

@@ -10,8 +10,4 @@ test-results/
 allure-report/
 report-db/
 test-results/
-# Playwright storage state files (your current filenames)
-*.auth
-
-# If you also use a .auth folder
 .auth/
