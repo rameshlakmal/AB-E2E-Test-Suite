@@ -31,7 +31,9 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests for ${{ matrix.role }}
-        run: npx playwright test --project=${{ matrix.role }}
+        run: |
+          echo "ROLE=${{ matrix.role }}"
+          npx playwright test --project="${{ matrix.role }}"
 
       - name: Upload Allure Results (${{ matrix.role }})
         if: always()
