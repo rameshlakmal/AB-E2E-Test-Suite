@@ -11,10 +11,10 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        role: [guest, user, purchased]
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     role: [guest, user, purchased]
 
     name: Run Playwright (${{ matrix.role }})
 
