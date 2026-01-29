@@ -3,12 +3,14 @@ import QuestionPage from "../pages/QuestionPage";
 import TechQuestionDetailsPage from "../pages/TQuestionDetailsPage";
 import BookmarkPage from "../pages/BookmarkPage";
 import SettingsPage from "../pages/Settingspage";
+import { ProjectsPage } from "../pages/Projects/projects.page";
 
 type Fixtures = {
   questionPage: QuestionPage;
   techQuestionDetailsPage: TechQuestionDetailsPage;
   settingsPage: SettingsPage;
   bookmarkPage: BookmarkPage;
+  projectsPage: ProjectsPage;
 };
 
 export const test = base.extend<Fixtures>({
@@ -23,6 +25,9 @@ export const test = base.extend<Fixtures>({
   },
   bookmarkPage: async ({ page }, use) => {
     await use(new BookmarkPage(page));
+  },
+  projectsPage: async ({ page }, use) => {
+    await use(new ProjectsPage(page));
   },
 });
 

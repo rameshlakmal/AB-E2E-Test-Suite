@@ -11,3 +11,4 @@ allure-report/
 report-db/
 test-results/
 .auth/
+.env/
