@@ -38,12 +38,6 @@ export default defineConfig({
     ],
   ],
 
-  // reporter: [
-  //   ["list"],
-  //   ["dot"],
-  //   ["ortoni-report", reportConfig],
-  //   // ["aiotests-playwright-reporter", { aioConfig: aioConfigDetails }],
-  // ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   globalSetup: require.resolve("./tests/auth.setup.ts"), // <-- adjust path
 

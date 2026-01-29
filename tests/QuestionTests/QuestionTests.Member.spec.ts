@@ -6,6 +6,3 @@ test.describe("Question Test Cases", () => {
     await expect(page.getByText("All skillsAll the timeLast")).toBeVisible();
   });
 });
-
-//Create a seperate file for locators
-//Try plywright agents for test generation

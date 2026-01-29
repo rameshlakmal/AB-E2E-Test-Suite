@@ -31,7 +31,10 @@ export default class BookmarkPage {
 
   async CreateBookmarkListFromQuestionPage(newListName: string): Promise<void> {
     await this.page.goto("/");
-    await this.page.locator(this.navlocators.Questions).click();
+    await this.page
+      .locator(this.bookmarkLocators.HeaderSelector)
+      .getByRole("link", { name: this.bookmarkLocators.QuestionsLinkName })
+      .click();
     await this.page
       .getByRole("link", {
         name: this.bookmarkLocators.DataSourcesVeryHardLinkName,
@@ -98,9 +101,7 @@ export default class BookmarkPage {
   async RenameBookmarkList(listName: string, newName: string): Promise<void> {
     await this.page.getByRole("button", { name: listName }).click();
     await this.page
-      .locator(
-        '//*[@id="main-content"]/div/div/div/div[2]/div[2]/div/div[1]/div/div/button',
-      )
+      .locator(this.bookmarkLocators.BookmarkListMenuButtonXPath)
       .click();
 
     await this.page.getByRole(this.bookmarkLocators.TextboxRole).fill(newName);
@@ -109,9 +110,7 @@ export default class BookmarkPage {
 
   async DeleteBookmarkList(): Promise<void> {
     await this.page
-      .locator(
-        '//*[@id="main-content"]/div/div/div/div[2]/div[2]/div/div[1]/button',
-      )
+      .locator(this.bookmarkLocators.BookmarkListDeleteButtonXPath)
       .click();
     await this.page
       .getByRole("button", { name: this.bookmarkLocators.ContinueButtonName })
