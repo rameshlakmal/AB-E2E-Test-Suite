@@ -1,0 +1,15 @@
+export const SettingsPageLocators = {
+  SettingsLinkName: "Settings",
+  EmailTextboxName: "Email",
+  UpdateButtonName: "Update",
+  UserNameTextboxName: "User name",
+  UserNameFormSelector: "form",
+  UserNameFormTextPrefix: "User Name",
+  UserNameFormTextSuffix: " is",
+  FirstNameTextboxName: "Your First name",
+  LastNameTextboxName: "Your Last name",
+  LiveInTextboxName: "Live in",
+  AboutTextboxName: "About you",
+  SocialLinksInputSelector: 'input[name="socialLinks\\.0"]',
+  SaveChangesButtonName: "Save Changes",
+} as const;

@@ -1,57 +1,75 @@
 import { Page } from "@playwright/test";
 import type { PersonalInfo } from "../types/profile.types";
+import { LocatorManager } from "../locators/LocatorManager";
 
 export default class SettingsPage {
   private page: Page;
+  private navlocators: typeof LocatorManager.NavigationLocators;
+  private settingsLocators: typeof LocatorManager.SettingsPageLocators;
 
   constructor(page: Page) {
     this.page = page;
+    this.navlocators = LocatorManager.NavigationLocators;
+    this.settingsLocators = LocatorManager.SettingsPageLocators;
   }
 
   async NavigateToSettings(): Promise<void> {
     await this.page.goto("/");
-    await this.page.locator("img.size-9.cursor-pointer.rounded-lg").click();
-    await this.page.getByRole("link", { name: "Settings" }).click();
+    await this.page.locator(this.navlocators.Profile).click();
+    await this.page
+      .getByRole("link", { name: this.settingsLocators.SettingsLinkName })
+      .click();
   }
 
   async ChangeEmail(email: string): Promise<void> {
-    await this.page.getByRole("textbox", { name: "Email" }).fill(email);
+    await this.page
+      .getByRole("textbox", { name: this.settingsLocators.EmailTextboxName })
+      .fill(email);
   }
   async clickUpdateEmailButton(): Promise<void> {
-    await this.page.getByRole("button", { name: "Update" }).nth(1).click();
+    await this.page
+      .getByRole("button", { name: this.settingsLocators.UpdateButtonName })
+      .nth(1)
+      .click();
   }
 
   async ChangeUserName(username: string): Promise<void> {
-    await this.page.getByRole("textbox", { name: "User name" }).fill(username);
+    await this.page
+      .getByRole("textbox", { name: this.settingsLocators.UserNameTextboxName })
+      .fill(username);
   }
 
   async clickUpdateUsernameButton(username: string) {
     await this.page
-      .locator("form")
-      .filter({ hasText: `User Name${username} is` })
+      .locator(this.settingsLocators.UserNameFormSelector)
+      .filter({
+        hasText: `${this.settingsLocators.UserNameFormTextPrefix}${username}${this.settingsLocators.UserNameFormTextSuffix}`,
+      })
       .getByRole("button")
       .click();
   }
 
   async ChangePersonalInformation(info: PersonalInfo): Promise<void> {
     await this.page
-      .getByRole("textbox", { name: "Your First name" })
+      .getByRole("textbox", { name: this.settingsLocators.FirstNameTextboxName })
       .fill(info.firstname);
     await this.page
-      .getByRole("textbox", { name: "Your Last name" })
+      .getByRole("textbox", { name: this.settingsLocators.LastNameTextboxName })
       .fill(info.lastname);
     await this.page
-      .getByRole("textbox", { name: "Live in" })
+      .getByRole("textbox", { name: this.settingsLocators.LiveInTextboxName })
       .fill(info.country);
     await this.page
-      .getByRole("textbox", { name: "About you" })
+      .getByRole("textbox", { name: this.settingsLocators.AboutTextboxName })
       .fill(info.about);
     await this.page
-      .locator('input[name="socialLinks\\.0"]')
+      .locator(this.settingsLocators.SocialLinksInputSelector)
       .fill(info.sociallink);
   }
 
   async clickUpdateProfileInfoButton() {
-    await this.page.getByRole("button", { name: "Save Changes" }).click();
+    await this.page
+      .getByRole("button", { name: this.settingsLocators.SaveChangesButtonName })
+      .click();
   }
 }

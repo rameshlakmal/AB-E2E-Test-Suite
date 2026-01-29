@@ -1,46 +1,61 @@
+// global-setup.ts
+import { chromium, type FullConfig } from "@playwright/test";
 import { Login } from "../test-data/test-data.json";
-import { expect, test as setup } from "@playwright/test";
 import LoginPage from "../pages/LoginPage";
-
-const baseURL = process.env.BASE_URL || "https://staging.analystbuilder.com/";
 
 const httpCredentials = {
   username: "te3ter",
   password: "22JJ33kk",
 };
 
-setup("User Login", async ({ browser }) => {
-  // user
-  {
-    const context = await browser.newContext({ baseURL, httpCredentials });
-    const page = await context.newPage();
-    const loginPage = new LoginPage(page);
-    await loginPage.loginWithValidCredentials(
-      Login.useremail,
-      Login.userpassword
-    );
+export default async function globalSetup(config: FullConfig) {
+  const baseURL =
+    process.env.BASE_URL ||
+    (config.projects[0]?.use?.baseURL as string) ||
+    "https://staging.analystbuilder.com/";
 
-    // Ensure login completed before saving storage state
-    await expect(page.getByRole("link", { name: "Dashboard" })).toBeVisible();
-    await context.storageState({ path: "./.auth/user.json" });
+  const browser = await chromium.launch();
 
-    await context.close();
+  try {
+    // user
+    {
+      const context = await browser.newContext({ baseURL, httpCredentials });
+      const page = await context.newPage();
+      const loginPage = new LoginPage(page);
+
+      await loginPage.loginWithValidCredentials(
+        Login.useremail,
+        Login.userpassword,
+      );
+
+      // replace expect(...) with a deterministic wait
+      await page
+        .getByRole("link", { name: "Dashboard" })
+        .waitFor({ state: "visible" });
+
+      await context.storageState({ path: "./.auth/user.json" });
+      await context.close();
+    }
+
+    // purchased
+    {
+      const context = await browser.newContext({ baseURL, httpCredentials });
+      const page = await context.newPage();
+      const loginPage = new LoginPage(page);
+
+      await loginPage.loginWithValidCredentials(
+        Login.paidemail,
+        Login.paidpassword,
+      );
+
+      await page
+        .getByRole("link", { name: "Dashboard" })
+        .waitFor({ state: "visible" });
+
+      await context.storageState({ path: "./.auth/purchased.json" });
+      await context.close();
+    }
+  } finally {
+    await browser.close();
   }
-
-  // purchased
-  {
-    const context = await browser.newContext({ baseURL, httpCredentials });
-    const page = await context.newPage();
-    const loginPage = new LoginPage(page);
-    await loginPage.loginWithValidCredentials(
-      Login.paidemail,
-      Login.paidpassword
-    );
-
-    // Ensure login completed before saving storage state
-    await expect(page.getByRole("link", { name: "Dashboard" })).toBeVisible();
-    await context.storageState({ path: "./.auth/purchased.json" });
-
-    await context.close();
-  }
-});
+}
